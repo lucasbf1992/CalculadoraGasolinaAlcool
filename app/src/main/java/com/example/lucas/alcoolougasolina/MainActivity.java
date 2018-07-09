@@ -2,6 +2,7 @@ package com.example.lucas.alcoolougasolina;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,9 +23,29 @@ public class MainActivity extends AppCompatActivity {
         gasolina = findViewById(R.id.editTextValorGasolina);
         alcool = findViewById(R.id.editTextValorAlcool);
 
+        gasolina.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                   gasolina.setText("");
+                }
 
+                return false;
+            }
+        });
 
+        alcool.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    alcool.setText("");
+                }
+
+                return false;
+            }
+        });
     }
 
     public void botaoCalcular (View v) {
