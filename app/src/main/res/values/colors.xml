@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#B2EBF2</color>
+    <color name="colorPrimaryDark">#42A5F5</color>
+    <color name="colorAccent">#FFAA00</color>
+    <color name="fundoAplicativo">#CADDA7</color>
+    <color name="fundoEditText">#CCEDFFCD</color>
+
+</resources>
