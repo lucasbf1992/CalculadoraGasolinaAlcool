@@ -1,6 +1,5 @@
 package com.example.lucas.alcoolougasolina;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.support.design.widget.FloatingActionButton;
@@ -8,13 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.lucas.alcoolougasolina.model.Posto;
+
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                     hideSoftKeyboard();
 
 
-
                     if (posto.calcularCombustivel()) {
                         resultadoAlcool();
 
@@ -103,25 +102,30 @@ public class MainActivity extends AppCompatActivity {
     private void resultadoGasolina() {
 
         double valorMaximoEtanol = posto.getValorGasolina() * 0.7;
+        DecimalFormat df = new DecimalFormat("#.##");
         String valor = String.valueOf(valorMaximoEtanol);
 
         titulo.setBackgroundResource(R.color.tituloResultadoGasolina);
         resultado.setBackgroundResource(R.color.resultadoGasolina);
         titulo.setText("GASOLINA");
         resultado.setText("Abasteça com gasolina!\n " +
-                "Etanol somente será viável abaixo de R$" + valor);
+                "Etanol somente será viável abaixo de R$" + df.format(valorMaximoEtanol));
     }
 
     private void resultadoAlcool() {
 
         double valorMaximoEtanol = posto.getValorGasolina() * 0.7;
+        DecimalFormat df = new DecimalFormat("#.##");
         String valor = String.valueOf(valorMaximoEtanol);
+
+
+
 
         titulo.setBackgroundResource(R.color.tituloResultadoEtanol);
         resultado.setBackgroundResource(R.color.resultadoEtanol);
         titulo.setText("ETANOL");
         resultado.setText("Abasteça com etanol!\n" +
-                "Etanol será viável enquanto estiver abaixo de R$ " + valor);
+                "Etanol será viável enquanto estiver abaixo de R$ " + df.format(valorMaximoEtanol));
     }
 
     private void hideSoftKeyboard() {
